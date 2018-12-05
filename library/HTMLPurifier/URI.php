@@ -279,6 +279,11 @@ class HTMLPurifier_URI
         if ($uri_def->host === $this->host) {
             return true;
         }
+        if ($uri_def->host[0] === '/') {
+            if (preg_match($uri_def->host, $this->host)) {
+                return true;
+            }
+        }
         return false;
     }
 
